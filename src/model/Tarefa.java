@@ -10,6 +10,11 @@ public class Tarefa {
     public Tarefa() {
     }
 
+    public Tarefa(int id, String descricao) {
+        this.id = id;
+        this.descricao = descricao;
+    }
+
     public Tarefa(int id, String descricao, Prioridade prioridade, boolean concluida) {
         this.id = id;
         this.descricao = descricao;
