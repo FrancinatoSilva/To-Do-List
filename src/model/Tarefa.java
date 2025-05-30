@@ -60,9 +60,9 @@ public class Tarefa {
 
     public void exibirTarefa() {
         if (concluida) {
-            System.out.println("[X] " + getDescricao() + " (" + getPrioridade() + ")");
+            System.out.println("[X] " + getDescricao() + " (" + getPrioridade() + ")" + " |" + getId() + "|");
         } else {
-            System.out.println("[ ] " + getDescricao() + " (" + getPrioridade() + ")");
+            System.out.println("[ ] " + getDescricao() + " (" + getPrioridade() + ")" + " |" + getId() + "|");
         }
     }
 }
