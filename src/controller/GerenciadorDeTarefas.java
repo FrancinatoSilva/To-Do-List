@@ -69,7 +69,87 @@ public class GerenciadorDeTarefas {
             listaDeTarefas.remove(tarefaParaRemover);
             System.out.println("Tarefa removida com sucesso!");
         } else {
-            System.out.println("Tarefa com ID " + idParaRemover + "não encontrada.");
+            System.out.println("Tarefa com ID " + idParaRemover + " não encontrada.");
+        }
+    }
+
+    public void marcarConcluida(Scanner sc) {
+        if (listaDeTarefas.isEmpty()) {
+            System.out.println("Não há tarefa para ser marcada como concluída!");
+            return;
+        }
+
+        System.out.print("Digite o ID da tarefa concluída:");
+        int idTarefaConcluida = sc.nextInt();
+
+        Tarefa tarefaConcluida = null;
+
+        for (Tarefa tarefa : listaDeTarefas) {
+            if (tarefa.getId() == idTarefaConcluida) {
+                tarefaConcluida = tarefa;
+                break;
+            }
+        }
+
+        if (tarefaConcluida != null) {
+            tarefaConcluida.setConcluida(true);
+            System.out.println("Tarefa marcada como concluída: ");
+            System.out.println(tarefaConcluida);
+        } else {
+            System.out.println("Tarefa com ID " + idTarefaConcluida + " não encontrada.");
+        }
+    }
+
+    public void editarTarefa(Scanner sc) {
+        if (listaDeTarefas.isEmpty()) {
+            System.out.println("Não há tarefa para editar!");
+            return;
+        }
+
+        System.out.print("Digite o ID da tarefa que você deseja editar: ");
+        int idTarefaEditar = sc.nextInt();
+
+        Tarefa tarefaEditar = null;
+
+        for (Tarefa tarefa : listaDeTarefas) {
+            if (tarefa.getId() == idTarefaEditar) {
+                tarefaEditar = tarefa;
+                break;
+            }
+        }
+
+        if (tarefaEditar != null) {
+            System.out.println("O que deseja editar?");
+            System.out.println("1 - Descrição");
+            System.out.println("2 - Prioridade");
+            int opcao = sc.nextInt();
+            sc.nextLine();
+
+            if (opcao == 1) {
+                System.out.println("Digite a nova descrição: ");
+                String novaDescricao = sc.nextLine();
+                tarefaEditar.setDescricao(novaDescricao);
+            } else if (opcao == 2) {
+                System.out.println("Digite a nova prioridade (BAIXA, MEDIA, ALTA): ");
+                String novaPrioridade = sc.nextLine().toUpperCase();
+
+                try {
+                    Tarefa.Prioridade prioridade = Tarefa.Prioridade.valueOf(novaPrioridade);
+                    tarefaEditar.setPrioridade(prioridade);
+                    System.out.println("Prioridade atualizada com sucesso.");
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Valor inválido. Prioridades válidas: BAIXA, MÉDIA, ALTA.");
+
+                }
+            } else {
+                System.out.println("Opção inválida.");
+            }
+
+            System.out.println("Tarefa atualizada: ");
+            System.out.println(tarefaEditar);
+
+        } else {
+            System.out.println("Tarefa com ID " + idTarefaEditar + " não encontrada.");
         }
     }
 }
