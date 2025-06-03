@@ -152,4 +152,15 @@ public class GerenciadorDeTarefas {
             System.out.println("Tarefa com ID " + idTarefaEditar + " não encontrada.");
         }
     }
+
+    public void exibirMenu() {
+        System.out.println("= = = = = GERENCIADOR DE TAREFAS = = = = =");
+        System.out.println("1 - Adicionar tarefa");
+        System.out.println("2 - Listar tarefas");
+        System.out.println("3 - Remover tarefas");
+        System.out.println("4 - Marcar tarefa como concluída");
+        System.out.println("5 - Editar tarefa");
+        System.out.println("6 - Encerrar execução");
+        System.out.println("- - - - - - - - - - - - - - - - - - - - - - ");
+    }
 }
