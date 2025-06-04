@@ -10,9 +10,10 @@ public class Tarefa {
     public Tarefa() {
     }
 
-    public Tarefa(int id, String descricao) {
+    public Tarefa(int id, String descricao, Prioridade prioridade) {
         this.id = id;
         this.descricao = descricao;
+        this.prioridade = prioridade;
     }
 
     public Tarefa(int id, String descricao, Prioridade prioridade, boolean concluida) {
@@ -64,5 +65,9 @@ public class Tarefa {
         } else {
             System.out.println("[ ] " + getDescricao() + " (" + getPrioridade() + ")" + " |" + getId() + "|");
         }
+    }
+    @Override
+    public String toString() {
+        return (this.concluida ? "[X] " : "[ ] ") + this.descricao + " (" + this.prioridade + ")" + " |" + this.id + "|";
     }
 }

@@ -14,7 +14,7 @@ public class GerenciadorDeTarefas {
         this.listaDeTarefas = new ArrayList<>(); //Construtor que instância a lista como ArrayList
     }
 
-    public void adicionarTarefa(String descricao) {
+    public void adicionarTarefa(String descricao, Tarefa.Prioridade prioridade) {
         Random random = new Random();
         int id;
 
@@ -32,7 +32,7 @@ public class GerenciadorDeTarefas {
             if (!idExiste) break;
         }
 
-        Tarefa nova = new Tarefa(id, descricao);
+        Tarefa nova = new Tarefa(id, descricao, prioridade);
         listaDeTarefas.add(nova);
         System.out.println("Tarefa adicionada com sucesso!");
     }
