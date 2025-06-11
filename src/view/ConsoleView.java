@@ -39,14 +39,17 @@ public class ConsoleView {
                         sc.nextLine();
                         System.out.print("Digite a descrição da tarefa: ");
                         String descricao = sc.nextLine();
-                        System.out.print("Digite a prioridade (BAIXA, MEDIA, ALTA): ");
-                        String input = sc.nextLine().toUpperCase();
 
-                        try {
-                            prioridade = Tarefa.Prioridade.valueOf(input);
-                            System.out.println("Você escolheu: " + prioridade);
-                        } catch (IllegalArgumentException e) {
-                            System.out.println("Prioridade inválida. Tente novamente.");
+                        while (prioridade == null) {
+                            System.out.print("Digite a prioridade (BAIXA, MEDIA, ALTA): ");
+                            String input = sc.nextLine().toUpperCase();
+
+                            try {
+                                prioridade = Tarefa.Prioridade.valueOf(input);
+                                System.out.println("Você escolheu: " + prioridade);
+                            } catch (IllegalArgumentException e) {
+                                System.out.println("Prioridade inválida. Digite BAIXA, MEDIA ou ALTA.");
+                            }
                         }
 
                         gerenciadorDeTarefas.adicionarTarefa(descricao, prioridade);
