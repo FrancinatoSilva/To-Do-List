@@ -1,11 +1,9 @@
-package view;
-
 import controller.GerenciadorDeTarefas;
 import model.Tarefa;
 
 import java.util.Scanner;
 
-public class ConsoleView {
+public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
